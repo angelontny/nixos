@@ -7,6 +7,9 @@
 - reduce loglevel to reduce output during boot
 - Fix hibernation ( "systemctl hibernate" shuts down the computer )
 - enable XDG directory spec and clean up the home directory ( i don't want all programs to have their own independent dotfile )
+
+### Problems Faced
 - Tried to configure git using nix, but it affects the "system configuration" not the "global configuration"
+- nixos-rebuild test creates a symlink called "result"
 
 ## GUI

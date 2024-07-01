@@ -7,6 +7,7 @@
     ];
 
   boot = {
+    consoleLogLevel = 3;
     loader = {
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
@@ -30,6 +31,7 @@
         STOP_CHARGE_THRESH_BAT0=1;
       };
     };
+    getty.autologinUser = "angelo";
   };
 
 
