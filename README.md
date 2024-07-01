@@ -1,14 +1,11 @@
 # nixos
 Nixos Configuration
 
-## To Do
+## Directory structure
 
-### Before Installation
-- Install Latest Kernel
-- Install and configure TLP
-- Consider swap for hibernation ( don't forget to enable encryption using the swapDevices option )
-- Create the initial commit with detailed commit message
+### notes
+- Contains additional thoughts i had while configuring the system
 
-### After Installation
-- Install necessary programs
-- Configure and track them in a separate repo
+### configuration
+- Contains the actual configuration files
+- symlinked to /etc/nixos
