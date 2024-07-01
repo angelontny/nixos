@@ -12,4 +12,3 @@ Nixos Configuration
 ### After Installation
 - Install necessary programs
 - Configure and track them in a separate repo
-
