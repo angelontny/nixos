@@ -61,6 +61,7 @@
        swaylock
        swayidle
        foot
+       fuzzel
      ];
     };
     bash.shellInit = ''
@@ -68,6 +69,20 @@
         exec sway
       fi
     '';
+  };
+
+  fonts = {
+    packages = with pkgs; [
+      (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+    ];
+    fontconfig = {
+      hinting.enable = false;
+      defaultFonts = {
+        monospace = [
+	  "JetBrainsMono Nerd Font"
+        ];
+      };
+    };
   };
 
   system.stateVersion = "24.05";
