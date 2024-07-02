@@ -31,7 +31,10 @@
         STOP_CHARGE_THRESH_BAT0=1;
       };
     };
-    getty.autologinUser = "angelo";
+    getty = {
+      autologinUser = "angelo";
+      greetingLine = "";
+    };
   };
 
 
@@ -47,9 +50,24 @@
   environment.systemPackages = with pkgs; [
   ];
 
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
+  programs = {
+    gnupg.agent = {
+      enable = true;
+      enableSSHSupport = true;
+    };
+    sway = {
+     enable = true;
+     extraPackages = with pkgs; [
+       swaylock
+       swayidle
+       foot
+     ];
+    };
+    bash.shellInit = ''
+      if [[ "$(tty)" == "/dev/tty1" ]]; then
+        exec sway
+      fi
+    '';
   };
 
   system.stateVersion = "24.05";
