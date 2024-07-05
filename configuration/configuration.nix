@@ -45,11 +45,16 @@
       git
       neovim
       firefox
+      gcc
+      gnumake
+      ripgrep
     ];
   };
 
   environment.systemPackages = with pkgs; [
     brightnessctl
+    wget
+    unzip
   ];
 
   programs = {
@@ -64,6 +69,7 @@
        swayidle
        foot
        fuzzel
+       wl-clipboard
      ];
     };
     bash.shellInit = ''

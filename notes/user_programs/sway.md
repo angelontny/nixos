@@ -11,3 +11,6 @@ Using the program brightnessctl. ( works even without a wayland or X11 session )
 
 ## Configuration
 - [ ] Copy the old configuration from backup and track it using git
+
+## Clipboard
+Installed wl-clipboard
