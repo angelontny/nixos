@@ -55,6 +55,7 @@
     brightnessctl
     wget
     unzip
+    pass
   ];
 
   programs = {
