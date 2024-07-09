@@ -48,6 +48,8 @@
       gcc
       gnumake
       ripgrep
+      go
+      mpv
     ];
   };
 
@@ -69,7 +71,9 @@
        swaylock
        swayidle
        foot
-       fuzzel
+       bemenu
+       mako
+       libnotify
        wl-clipboard
      ];
     };
