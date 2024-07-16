@@ -13,6 +13,7 @@
       efi.canTouchEfiVariables = true;
     };
     kernelPackages = pkgs.linuxPackages_latest;
+    kernelParams = [ "i915.enable_psr=0" ];
   };
 
   networking.hostName = "katana";
@@ -20,7 +21,16 @@
 
   time.timeZone = "Asia/Kolkata";
 
-  sound.enable = true;
+  #sound.enable = false;
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+    # If you want to use JACK applications, uncomment this
+    #jack.enable = true;
+  };
 
   services = {
     libinput.enable = true;
@@ -37,19 +47,19 @@
     };
   };
 
-
   users.users.angelo = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
     packages = with pkgs; [
       git
-      neovim
       firefox
       gcc
       gnumake
       ripgrep
       go
       mpv
+      telegram-desktop
+      zathura
     ];
   };
 
@@ -58,6 +68,7 @@
     wget
     unzip
     pass
+    neovim
   ];
 
   programs = {
@@ -75,6 +86,8 @@
        mako
        libnotify
        wl-clipboard
+       slurp
+       grim
      ];
     };
     bash.shellInit = ''
