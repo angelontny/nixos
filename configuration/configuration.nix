@@ -6,6 +6,7 @@
       ./hardware-configuration.nix
     ];
 
+  nixpkgs.config.allowUnfree = true;
   boot = {
     consoleLogLevel = 3;
     loader = {
@@ -46,6 +47,24 @@
       greetingLine = "";
     };
   };
+  xdg = {
+    portal = {
+      wlr = {
+        enable = true;
+        # settings = {
+        #            screencast = {
+        #              output_name = "eDP-1";
+        #              max_fps = 30;
+        #              chooser_type = "simple";
+        #              chooser_cmd = "${pkgs.slurp}/bin/slurp -f %o -or";
+        #            };
+        #          };
+      };
+      config = {
+        common.default = [ "wlr" ];
+      };
+    };
+  };
 
   users.users.angelo = {
     isNormalUser = true;
@@ -53,6 +72,7 @@
     packages = with pkgs; [
       git
       firefox
+      google-chrome
       gcc
       gnumake
       ripgrep
@@ -60,6 +80,10 @@
       mpv
       telegram-desktop
       zathura
+      texlab
+      ltex-ls
+      xdg-desktop-portal-wlr 
+      pipewire_0_2
     ];
   };
 
