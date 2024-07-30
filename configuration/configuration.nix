@@ -20,6 +20,10 @@
   networking.hostName = "katana";
   networking.wireless.iwd.enable = true;
 
+  # Bluetooth
+  hardware.bluetooth.enable = true; # enables support for Bluetooth
+  hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
+  ...
   time.timeZone = "Asia/Kolkata";
 
   #sound.enable = false;
@@ -46,20 +50,19 @@
       autologinUser = "angelo";
       greetingLine = "";
     };
+    blueman.enable = true;
   };
   xdg = {
     portal = {
       wlr = {
         enable = true;
-        # settings = {
-        #            screencast = {
-        #              output_name = "eDP-1";
-        #              max_fps = 30;
-        #              chooser_type = "simple";
-        #              chooser_cmd = "${pkgs.slurp}/bin/slurp -f %o -or";
-        #            };
-        #          };
-      };
+          settings = {
+           screencast = {
+             output_name = "eDP-1";
+             max_fps = 30;
+           };
+          };
+        };
       config = {
         common.default = [ "wlr" ];
       };
@@ -68,22 +71,17 @@
 
   users.users.angelo = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ];
+    extraGroups = [ "wheel" "wireshark" ];
     packages = with pkgs; [
       git
       firefox
       google-chrome
-      gcc
-      gnumake
-      ripgrep
-      go
       mpv
       telegram-desktop
       zathura
-      texlab
       ltex-ls
-      xdg-desktop-portal-wlr 
       pipewire_0_2
+      python312
     ];
   };
 
@@ -107,13 +105,12 @@
        swayidle
        foot
        bemenu
-       mako
-       libnotify
        wl-clipboard
        slurp
        grim
      ];
     };
+    wireshark.enable = true;
     bash.shellInit = ''
       export XDG_CONFIG_HOME="$HOME/.config"
       export XDG_DATA_HOME="$HOME/.local/share"
