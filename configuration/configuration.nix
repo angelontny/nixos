@@ -6,7 +6,6 @@
       ./hardware-configuration.nix
     ];
 
-  nixpkgs.config.allowUnfree = true;
   boot = {
     consoleLogLevel = 3;
     loader = {
@@ -17,25 +16,20 @@
     kernelParams = [ "i915.enable_psr=0" ];
   };
 
-  networking.hostName = "katana";
+  hardware = {
+    pulseaudio.enable = true;
+    bluetooth = {
+      enable = true;
+      powerOnBoot = true;
+    };
+  };
+
+  networking.hostName = "kry";
   networking.wireless.iwd.enable = true;
 
-  # Bluetooth
-  hardware.bluetooth.enable = true; # enables support for Bluetooth
-  hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
-  ...
   time.timeZone = "Asia/Kolkata";
 
   #sound.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
-  };
 
   services = {
     libinput.enable = true;
@@ -71,17 +65,14 @@
 
   users.users.angelo = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "wireshark" ];
+    extraGroups = [ "wheel" ];
     packages = with pkgs; [
       git
       firefox
-      google-chrome
       mpv
-      telegram-desktop
       zathura
-      ltex-ls
-      pipewire_0_2
       python312
+      gcc
     ];
   };
 
@@ -89,7 +80,6 @@
     brightnessctl
     wget
     unzip
-    pass
     neovim
   ];
 
@@ -108,9 +98,9 @@
        wl-clipboard
        slurp
        grim
+       alsa-utils
      ];
     };
-    wireshark.enable = true;
     bash.shellInit = ''
       export XDG_CONFIG_HOME="$HOME/.config"
       export XDG_DATA_HOME="$HOME/.local/share"
