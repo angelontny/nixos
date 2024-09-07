@@ -18,10 +18,10 @@
 
   hardware = {
     pulseaudio.enable = true;
-    bluetooth = {
-      enable = true;
-      powerOnBoot = true;
-    };
+    # bluetooth = {
+    #   enable = true;
+    #   powerOnBoot = true;
+    # };
   };
 
   networking.hostName = "kry";
@@ -44,7 +44,7 @@
       autologinUser = "angelo";
       greetingLine = "";
     };
-    blueman.enable = true;
+    # blueman.enable = true;
   };
   xdg = {
     portal = {
