@@ -73,6 +73,7 @@
       zathura
       python312
       gcc
+      libgcc
     ];
   };
 
