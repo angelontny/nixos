@@ -73,6 +73,7 @@
       zathura
       python312
       gcc
+      libgcc
     ];
   };
 
@@ -109,6 +110,7 @@
       if [[ "$(tty)" == "/dev/tty1" ]]; then
         exec sway
       fi
+      alias g++="g++ -Wall -Weffc++ -Wextra -Wconversion -Wsign-conversion -std=c++17"
     '';
   };
 
