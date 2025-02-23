@@ -16,17 +16,17 @@
 
   fileSystems."/" =
     {
-      device = "/dev/disk/by-uuid/05277244-aa8d-441e-9c7d-494513961322";
+      device = "/dev/disk/by-uuid/eaf04c11-dd80-4f70-9afa-3e18b4c17fbe";
       fsType = "ext4";
     };
 
-  boot.initrd.luks.devices."root".device = "/dev/disk/by-uuid/2c726680-a096-430a-9b7e-37cae046da33";
+  boot.initrd.luks.devices."root".device = "/dev/disk/by-uuid/da2c6a22-0c0d-4c93-936d-0e15769100b6";
 
   fileSystems."/boot" =
     {
-      device = "/dev/disk/by-uuid/6CB7-36BB";
+      device = "/dev/disk/by-uuid/6E6E-A659";
       fsType = "vfat";
-      options = [ "fmask=0077" "dmask=0077" ];
+      options = [ "fmask=0022" "dmask=0022" ];
     };
 
   swapDevices = [ ];

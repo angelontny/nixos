@@ -9,11 +9,6 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   boot = {
-    plymouth = {
-      enable = true;
-      themePackages = with pkgs; [ (adi1090x-plymouth-themes.override { selected_themes = [ "infinite_seal" ]; }) ];
-      theme = "infinite_seal";
-    };
     consoleLogLevel = 3;
     loader = {
       systemd-boot = {
@@ -36,6 +31,9 @@
       settings = {
         General = {
           EnableNetworkConfiguration = true;
+        };
+        Network = {
+          EnableIPv6 = true;
         };
       };
     };
@@ -73,7 +71,7 @@
   services = {
     printing = {
       enable = true;
-      drivers = with pkgs; [ hplip gutenprint splix];
+      drivers = with pkgs; [ hplip gutenprint splix ];
     };
   };
 
@@ -89,6 +87,9 @@
       zathura
       mpv
       gcc
+    ];
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIM9KDWVxBtVPKbX3dbCJK+D/nVDaORqodHCpjy1yGeaQ angelo@katana"
     ];
   };
 
@@ -110,10 +111,12 @@
       ];
     };
 
+
     bash.shellInit = ''
       export XDG_CONFIG_HOME="$HOME/.config"
       export XDG_DATA_HOME="$HOME/.local/share"
       export XDG_DOWNLOAD_DIR="$HOME/dwl"
+      export EDITOR=nvim
 
       if [[ "$(tty)" == "/dev/tty1" ]]; then
         exec sway
@@ -121,12 +124,38 @@
     '';
   };
 
+  # networking.wg-quick.interfaces =
+  #   {
+  #     wg0 = {
+  #       address = [
+  #         "10.0.0.3/24"
+  #       ];
+  #       peers = [
+  #         {
+  #           allowedIPs = [
+  #             "10.0.0.1/24"
+  #           ];
+  #           endpoint = "vpn.angeloantony.com:51820";
+  #           publicKey = "RHAuwe7MUQyrEw9sCckSqxseFrG1NDxyQBiyKhzRnzQ=";
+  #           persistentKeepalive = 25;
+  #         }
+  #       ];
+  #       privateKey = "aL16ajJdgbNIsPz32lg6QkVassNxLDHpcwCa65ktGFg=";
+  #     };
+  #   };
+
   # Video Acceleration
-  hardware.graphics = {
-    enable = true;
-    extraPackages = with pkgs; [
-      intel-media-driver
-    ];
+  hardware = {
+    bluetooth = {
+      enable = true;
+      powerOnBoot = true;
+    };
+    graphics = {
+      enable = true;
+      extraPackages = with pkgs; [
+        intel-media-driver
+      ];
+    };
   };
 
   environment = {
@@ -150,6 +179,7 @@
       };
     };
   };
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   programs.mtr.enable = true;
@@ -161,8 +191,22 @@
   # List services that you want to enable:
   services.resolved.enable = true;
   services.dbus.implementation = "broker";
+  services.blueman.enable = true;
 
-  # networking.firewall.allowedTCPPorts = [ ... ];
+  services.openssh = {
+    enable = true;
+    ports = [ 22 ];
+    settings = {
+      PasswordAuthentication = false;
+      AllowUsers = null; # Allows all users by default. Can be [ "user1" "user2" ]
+      UseDns = true;
+      X11Forwarding = false;
+      PermitRootLogin = "prohibit-password"; # "yes", "without-password", "prohibit-password", "forced-commands-only", "no"
+    };
+  };
+
+  networking.firewall.enable = true;
+  # networking.firewall.interfaces.wg0.allowedTCPPorts = [ 22 ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   system.stateVersion = "24.11";
 }
