@@ -63,17 +63,17 @@
     pipewire = {
       enable = true;
       pulse.enable = true;
+      alsa.enable = true;
     };
+    libinput.enable = true;
   };
 
-  services.libinput.enable = true;
-  services.pipewire.alsa.enable = true;
-  services = {
-    printing = {
-      enable = true;
-      drivers = with pkgs; [ hplip gutenprint splix ];
-    };
-  };
+  # services = {
+  #   printing = {
+  #     enable = true;
+  #     drivers = with pkgs; [ hplip gutenprint splix ];
+  #   };
+  # };
 
   users.users.angelo = {
     isNormalUser = true;
@@ -87,9 +87,6 @@
       zathura
       mpv
       gcc
-    ];
-    openssh.authorizedKeys.keys = [
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIM9KDWVxBtVPKbX3dbCJK+D/nVDaORqodHCpjy1yGeaQ angelo@katana"
     ];
   };
 
