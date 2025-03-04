@@ -19,7 +19,6 @@
       alsa.enable = true;
     };
     libinput.enable = true;
-    resolved.enable = true;
     dbus.implementation = "broker";
     blueman.enable = true;
     openssh = {

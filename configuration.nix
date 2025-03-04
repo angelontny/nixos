@@ -6,6 +6,7 @@
       ./hardware-configuration.nix
       ./modules/boot.nix
       ./modules/network.nix
+      ./modules/services.nix
     ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
