@@ -49,6 +49,14 @@
         wl-clipboard
       ];
     };
+    uwsm = {
+      enable = true;
+      waylandCompositors.sway = {
+        prettyName = "Sway";
+        comment = "Sway compositor managed by UWSM";
+        binPath = "/run/current-system/sw/bin/sway";
+      };
+    };
 
 
     bash.shellInit = ''
@@ -57,9 +65,9 @@
       export XDG_DOWNLOAD_DIR="$HOME/dwl"
       export EDITOR=nvim
 
-      if [[ "$(tty)" == "/dev/tty1" ]]; then
-        exec sway
-      fi
+      # if [[ "$(tty)" == "/dev/tty1" ]]; then
+      #   exec sway
+      # fi
     '';
   };
 

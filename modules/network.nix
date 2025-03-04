@@ -1,4 +1,4 @@
-{config, pkgs, ...}:
+{ config, pkgs, ... }:
 
 {
   networking = {
@@ -10,12 +10,13 @@
           EnableNetworkConfiguration = true;
         };
         Network = {
-          EnableIPv6 = true;
+          NameResolvingService = "resolvconf";
         };
       };
     };
     dhcpcd.enable = false;
     firewall.enable = true;
+    resolvconf.enable = true;
   };
 
   # networking.wg-quick.interfaces =
@@ -39,5 +40,4 @@
   #   };
   # networking.firewall.interfaces.wg0.allowedTCPPorts = [ 22 ];
   # networking.firewall.allowedUDPPorts = [ ... ];
-
 }
