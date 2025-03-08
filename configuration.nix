@@ -7,6 +7,7 @@
       ./modules/boot.nix
       ./modules/network.nix
       ./modules/services.nix
+      ./modules/nixbin.nix
     ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -66,9 +67,9 @@
       export XDG_DOWNLOAD_DIR="$HOME/dwl"
       export EDITOR=nvim
 
-      # if [[ "$(tty)" == "/dev/tty1" ]]; then
-      #   exec sway
-      # fi
+      if [[ "$(tty)" == "/dev/tty1" ]]; then
+        exec sway
+      fi
     '';
   };
 
