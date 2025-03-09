@@ -21,7 +21,7 @@
 
   users.users.angelo = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ];
+    extraGroups = [ "wheel" "docker" ];
     packages = with pkgs; [
       git
       neovim
