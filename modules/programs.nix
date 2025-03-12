@@ -7,7 +7,7 @@
         # foot
         grim
         slurp
-        swaylock
+        # swaylock
         bemenu
         wpaperd
         mako
