@@ -1,7 +1,6 @@
 { ... }:
 
 {
-  virtualisation.docker.enable = true;
   services = {
     tlp = {
       enable = true;

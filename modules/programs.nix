@@ -24,8 +24,8 @@
         binPath = "/run/current-system/sw/bin/sway";
       };
     };
+    mtr.enable = true;
+    ssh.startAgent = true;
+    gnupg.agent.enable = true;
   };
-  mtr.enable = true;
-  ssh.startAgent = true;
-  gnupg.agent.enable = true;
 }

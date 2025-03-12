@@ -9,10 +9,9 @@
     ./modules/programs.nix
     ./modules/bash.nix
     ./modules/services.nix
+    ./modules/boot.nix
+    # ./modules/docker.nix
   ];
-
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
