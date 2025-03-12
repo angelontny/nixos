@@ -1,4 +1,4 @@
-{pkgs, ...}:
+{ pkgs, ... }:
 
 {
   hardware = {
@@ -8,12 +8,8 @@
     };
     graphics = {
       enable = true;
-      extraPackages = with pkgs; [
-        intel-media-driver
-      ];
+      extraPackages = with pkgs; [ intel-media-driver ];
     };
   };
-  environment.sessionVariables = {
-    LIBVA_DRIVER_NAME = "iHD";
-  };
+  environment.sessionVariables = { LIBVA_DRIVER_NAME = "iHD"; };
 }

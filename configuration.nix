@@ -24,16 +24,7 @@
   users.users.angelo = {
     isNormalUser = true;
     extraGroups = [ "wheel" "docker" ];
-    packages = with pkgs; [
-      git
-      neovim
-      tmux
-      nil
-      firefox
-      zathura
-      mpv
-      gcc
-    ];
+    packages = with pkgs; [ git neovim tmux nil firefox zathura mpv gcc ];
   };
 
   system.stateVersion = "25.05";
