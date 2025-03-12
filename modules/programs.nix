@@ -4,7 +4,7 @@
       enable = true;
       extraPackages = with pkgs; [
         brightnessctl
-        foot
+        # foot
         grim
         slurp
         swaylock
