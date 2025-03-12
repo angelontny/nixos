@@ -9,7 +9,7 @@
         slurp
         # swaylock
         bemenu
-        wpaperd
+        # wpaperd
         mako
         libnotify
         alsa-utils
