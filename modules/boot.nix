@@ -13,7 +13,10 @@
       efi.canTouchEfiVariables = true;
     };
     kernelPackages = pkgs.linuxPackages_latest;
-    kernelParams = [ "splash" "quiet" ];
+    kernelParams = [
+      "splash"
+      "quiet"
+    ];
     initrd.systemd.enable = true;
   };
 }

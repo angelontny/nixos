@@ -1,7 +1,11 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ ./config/foot.nix ./config/foot.nix ./config/wpaperd.nix];
+  imports = [
+    ./config/foot.nix
+    ./config/foot.nix
+    ./config/wpaperd.nix
+  ];
   home.username = "angelo";
   home.homeDirectory = "/home/angelo";
 

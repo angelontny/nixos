@@ -13,19 +13,35 @@
     # ./modules/docker.nix
   ];
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
-  swapDevices = [{
-    device = "/swapfile";
-    size = 8 * 1024;
-  }];
+  swapDevices = [
+    {
+      device = "/swapfile";
+      size = 8 * 1024;
+    }
+  ];
 
   users.users.angelo = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "docker" ];
-    packages = with pkgs; [ git neovim tmux nil firefox zathura mpv gcc ];
+    extraGroups = [
+      "wheel"
+      "docker"
+    ];
+    packages = with pkgs; [
+      git
+      neovim
+      tmux
+      nil
+      firefox
+      zathura
+      mpv
+      gcc
+    ];
   };
 
   system.stateVersion = "25.05";
 }
-

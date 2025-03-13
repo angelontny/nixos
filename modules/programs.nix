@@ -1,15 +1,13 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   programs = {
     sway = {
       enable = true;
       extraPackages = with pkgs; [
         brightnessctl
-        # foot
         grim
         slurp
-        # swaylock
         bemenu
-        # wpaperd
         mako
         libnotify
         alsa-utils

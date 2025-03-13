@@ -7,8 +7,12 @@
     wireless.iwd = {
       enable = true;
       settings = {
-        General = { EnableNetworkConfiguration = true; };
-        Network = { NameResolvingService = "resolvconf"; };
+        General = {
+          EnableNetworkConfiguration = true;
+        };
+        Network = {
+          NameResolvingService = "resolvconf";
+        };
       };
     };
     dhcpcd.enable = false;
