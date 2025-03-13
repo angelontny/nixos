@@ -5,6 +5,7 @@
     ./config/foot.nix
     ./config/foot.nix
     ./config/wpaperd.nix
+    ./config/zathura.nix
   ];
   home.username = "angelo";
   home.homeDirectory = "/home/angelo";

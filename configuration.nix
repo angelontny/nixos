@@ -37,7 +37,6 @@
       tmux
       nil
       firefox
-      zathura
       mpv
       gcc
     ];
