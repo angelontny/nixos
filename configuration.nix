@@ -32,12 +32,12 @@
       "docker"
     ];
     packages = with pkgs; [
-      git
+      # git
       neovim
-      tmux
+      # tmux
       nil
       firefox
-      mpv
+      acpi
       gcc
     ];
   };

@@ -16,7 +16,7 @@
     pipewire = {
       enable = true;
       pulse.enable = true;
-      alsa.enable = true;
+      # alsa.enable = true;
     };
     libinput.enable = true;
     dbus.implementation = "broker";
