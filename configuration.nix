@@ -42,5 +42,14 @@
     ];
   };
 
+  specialisation = {
+    server.configuration = {
+      system.nixos.tags = [ "server" ];
+      imports = [
+        ./server/nginx.nix
+      ];
+    };
+  };
+
   system.stateVersion = "25.05";
 }
