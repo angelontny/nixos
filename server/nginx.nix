@@ -1,15 +1,15 @@
 {
+  networking.firewall.allowedTCPPorts = [ 80 ];
+
   services.nginx = {
     enable = true;
-    virtualHosts."localhost" = {
-    # addSSL = true;
-    # enableACME = true;
-    root = "/var/www/angeloantony";
+    virtualHosts = {
+      "angeloantony.com" = {
+        root = "/var/www/angeloantony";
+      };
+      "test.angeloantony.com" = {
+        root = "/var/www/angeloantonyt";
+      };
     };
   };
-
-# security.acme = {
-#   acceptTerms = true;
-#   defaults.email = "foo@bar.com";
-# };
 }

@@ -49,6 +49,7 @@
       system.nixos.tags = [ "server" ];
       imports = [
         ./server/nginx.nix
+        ./server/wireguard.nix
       ];
     };
   };
