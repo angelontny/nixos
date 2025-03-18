@@ -33,6 +33,8 @@
     ];
     packages = with pkgs; [
       # git
+      pass
+      element-desktop
       neovim
       # tmux
       nil
