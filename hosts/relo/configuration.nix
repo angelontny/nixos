@@ -4,8 +4,6 @@
   imports = [
     ./hardware-configuration.nix
     ./modules/network.nix
-    ./modules/fonts.nix
-    ./modules/hw_cfg.nix
     ./modules/programs.nix
     ./modules/bash.nix
     ./modules/services.nix
@@ -18,41 +16,21 @@
     "flakes"
   ];
 
-  swapDevices = [
-    {
-      device = "/swapfile";
-      size = 8 * 1024;
-    }
-  ];
-
   users.users.angelo = {
     isNormalUser = true;
     extraGroups = [
       "wheel"
-      "docker"
     ];
     packages = with pkgs; [
-      # git
       pass
-      element-desktop
       neovim
-      # tmux
+      tmux
       nil
-      firefox
-      acpi
       gcc
     ];
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKLzb+D/e+4uH9STMN2L0m0lbtlrqp8+DvRmiPeWM8tO angelo"
+    ];
   };
-
-  specialisation = {
-    server.configuration = {
-      system.nixos.tags = [ "server" ];
-      imports = [
-        ./server/nginx.nix
-        ./server/wireguard.nix
-      ];
-    };
-  };
-
   system.stateVersion = "25.05";
 }
